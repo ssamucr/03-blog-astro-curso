@@ -1,8 +1,23 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+
+const posts = [
+  "post-01",
+  "post-02",
+  "post-03",
+  "post-04",
+  "post-05",
+];
+
 ---
 
 <MainLayout title="Samuel's blog">
   <h1 class="text-5xl font-bold text-center text-blue-500">Hola mundo</h1>
+
+  <ul class="mx-auto mt-10 max-w-2xl">
+    {posts.map((post) => {
+      return <li class="mb-2"><a href={`/posts/${post}`} class="text-white hover:underline text-xl">{post}</a></li>
+    })}
+  </ul>
   
 </MainLayout>

@@ -3,11 +3,7 @@ import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import '../styles/blog.css';
 
-// interface Props {
-//   title?: string;
-// }
-
-const { title = 'Astro', ...rest } = Astro.props;
+const { ...rest } = Astro.props;
 
 const frontmatter = rest.frontmatter;
 
