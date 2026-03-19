@@ -1,23 +1,27 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+import MainLayout from '@layouts/MainLayout.astro';
+import { siteConfig } from '@config/site-config';
+import BlogPost from '@components/BlogPost.astro';
 
-const posts = [
-  "post-01",
-  "post-02",
-  "post-03",
-  "post-04",
-  "post-05",
-];
+const posts = await Astro.glob('./posts/*.mdx');
 
 ---
 
-<MainLayout title="Samuel's blog">
+<MainLayout title={siteConfig.title} description={siteConfig.description}>
   <h1 class="text-5xl font-bold text-center text-blue-500">Hola mundo</h1>
 
-  <ul class="mx-auto mt-10 max-w-2xl">
-    {posts.map((post) => {
-      return <li class="mb-2"><a href={`/posts/${post}`} class="text-white hover:underline text-xl">{post}</a></li>
-    })}
-  </ul>
+  <!-- component -->
+  <section class="bg-white dark:bg-gray-900">
+      <div class="container px-6 py-10 mx-auto">
+          <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">{siteConfig.title}</h1>
+
+          <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
+              {posts.map((post) => {
+                return <BlogPost {...post} />
+              })}
+
+          </div>
+      </div>
+  </section>
   
 </MainLayout>
