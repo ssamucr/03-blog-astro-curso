@@ -3,9 +3,9 @@ import { ClientRouter } from 'astro:transitions';
 import '@styles/global.css';
 import '@styles/blog.css';
 
-const { ...rest } = Astro.props;
+const { title } = Astro.props;
 
-const frontmatter = rest.frontmatter;
+// const frontmatter = rest.frontmatter;
 
 ---
 
@@ -16,13 +16,13 @@ const frontmatter = rest.frontmatter;
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{frontmatter.title}</title>
+		<title>{title}</title>
 
         <ClientRouter />
 	</head>
 	<body class="bg-gray-900">
 
-        <a href="/">Regresar</a>
+        <button onclick="history.back()" class="bg-gray-700 text-white px-4 py-2 rounded cursor-pointer" id="btn-back">Regresar</button>
 
 		<main class="mb-10 max-w-5xl m-auto px-2 py-2">
             <slot/>
