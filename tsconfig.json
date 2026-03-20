@@ -12,7 +12,8 @@
       "@config/*": ["src/config/*"],
       "@utils/*": ["src/utils/*"],
       "@styles/*": ["src/styles/*"],
-      "@content/*": ["src/content/*"]
+      "@content/*": ["src/content/*"],
+      "@assets/*": ["src/assets/*"]
     }
   }
 }
