@@ -3,20 +3,56 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import Image from "astro/components/Image.astro";
 
 import post05 from "@assets/images/post-05.png";
+import Picture from "astro/components/Picture.astro";
 
 ---
 
 <MainLayout title="Images">
     <h1 class="text-5xl text-white">Imágenes</h1>
 
+    <h2>Imagen regular eager</h2>
     <img src="/assets/images/post-05.png" alt="Example Image" loading="eager" width="250">
-
-    <Image src={post05} alt="Example Image" width="250" height="250" />
+    
+    <h2>Image component eager</h2>
+    <Image src={post05} alt="post 05" width="250" height="250" />
+    
+    <h2>Image component quality low</h2>
+    <Image src={post05} quality="low" alt="post 05" width="250" height="250" />
+    
+    <h2>Image component quality high</h2>
+    <Image src={post05} quality="high" alt="post 05" width="250" height="250" />
+    
+    <h2>Image component quality max</h2>
+    <Image src={post05} quality="max" alt="post 05" width="250" height="250" />
+    
+    <h2>Image component format</h2>
+    <Image src={post05} format="avif" alt="post 05" width="250" height="250" />
+    
+    <h2>Picture component formats</h2>
+    <Picture
+        src={post05}
+        formats={["avif", "webp"]}
+        widths={[240, 540, 720, post05.width]}
+        sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${post05.width}px`}
+        alt="post 05"
+        width="250"
+        height="250"
+    />
     
     <div style={{
         height: '3000px'
-    }}>
-
+    }} class="px-2 py-4">
+        <p class="text-white">Este es un espacio para el lazy loading...</p>
     </div>
+
+    <h2>Imagen regular lazy</h2>
     <img src="/assets/images/post-01.png" alt="Example Image" loading="lazy" width="250">
 </MainLayout>
+
+<style>
+    h2 {
+        color: #fff;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+</style>
