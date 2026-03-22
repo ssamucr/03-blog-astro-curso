@@ -3,11 +3,11 @@ import { date } from "astro:schema";
 
 const blogCollection = defineCollection({
     type: 'content',
-    schema: z.object({
+    schema: ({ image }) => z.object({
         title: z.string(),
         date: date(),
         description: z.string(),
-        image: z.string(),
+        image: image(),
         author: z.string(),
         tags: z.array(z.string()),
     })
