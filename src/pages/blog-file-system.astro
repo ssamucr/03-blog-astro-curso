@@ -1,16 +1,18 @@
 ---
-import MainLayout from '@layouts/MainLayout.astro';
-import { siteConfig } from '@config/site-config';
-import BlogPost from '@components/BlogPost.astro';
+// import MainLayout from '@layouts/MainLayout.astro';
+// import { siteConfig } from '@config/site-config';
+// import BlogPost from '@components/BlogPost.astro';
+// import type { MDXInstance } from 'astro';
 
-const posts = await Astro.glob('./posts-old/*.mdx');
+// const postModules = import.meta.glob<MDXInstance<Record<string, any>>>('./posts-old/*.mdx');
+// const posts = await Promise.all(Object.values(postModules).map(fn => fn()));
 
 ---
 
-<MainLayout title={siteConfig.title} description={siteConfig.description}>
+<!-- <MainLayout title={siteConfig.title} description={siteConfig.description}>
   <h1 class="text-5xl font-bold text-center text-blue-500">Hola mundo</h1>
 
-  <!-- component -->
+  
   <section class="bg-white dark:bg-gray-900">
       <div class="container px-6 py-10 mx-auto">
           <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">{siteConfig.title}</h1>
@@ -24,4 +26,4 @@ const posts = await Astro.glob('./posts-old/*.mdx');
       </div>
   </section>
   
-</MainLayout>
+</MainLayout> -->

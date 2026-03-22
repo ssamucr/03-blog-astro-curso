@@ -1,7 +1,7 @@
 ---
 import BlogLayout from "@/layouts/BlogLayout.astro";
 import type { GetStaticPaths } from "astro";
-import Image from "astro/components/Image.astro";
+import { Image } from 'astro:assets';
 import { getCollection } from "astro:content";
 
 export const getStaticPaths = (async () => {
