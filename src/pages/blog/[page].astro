@@ -20,6 +20,8 @@ console.log(page);
     <h1 class="text-3xl font-semibold capitalize lg:text-4xl text-white">
       Fernando's Blog paginado
     </h1>
+
+    <a href="/" class="bg-transparent text-blue-500 hover:underline">Volver a inicio</a>
   </div>
 
   <section class="bg-gray-900" aria-label="Entradas de blog">
@@ -35,6 +37,7 @@ console.log(page);
       href={page.url.prev}
       class:list={{
         disabled: !page.url.prev,
+        button_paginate: true
       }}>Anteriores</a
     >
     
@@ -43,6 +46,7 @@ console.log(page);
       href={page.url.next}
       class:list={{
         disabled: !page.url.next,
+        button_paginate: true
       }}>Siguientes</a
     >
   </section>
@@ -51,7 +55,7 @@ console.log(page);
 <style>
     @import "tailwindcss";
 
-  a {
+  .button_paginate {
     @apply bg-blue-500 text-white p-2 rounded hover:bg-blue-600 cursor-pointer;
   }
 
