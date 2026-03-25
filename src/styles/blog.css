@@ -25,6 +25,10 @@ p {
   @apply text-white my-5;
 }
 
+#btn-back {
+  @apply bg-gray-700 text-white px-4 py-2 rounded cursor-pointer hover:bg-gray-600;
+}
+
 a {
   @apply text-blue-500 hover:underline;
 }
