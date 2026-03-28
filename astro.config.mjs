@@ -12,5 +12,5 @@ export default defineConfig({
   },
 
   integrations: [mdx()],
-  site: 'https://my-blog.com',
+  site: 'https://03-blog-astro-curso.netlify.app',
 });
