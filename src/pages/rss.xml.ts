@@ -1,6 +1,10 @@
 import rss from "@astrojs/rss";
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
+import MarkdownIt from "markdown-it";
+import sanitizeHtml from "sanitize-html";
+
+const parser = new MarkdownIt()
 
 export const GET = (async ({ params, request, site }) => {
 
@@ -8,15 +12,33 @@ export const GET = (async ({ params, request, site }) => {
 
   return rss(
     {
-        stylesheet: "/styles/rss.xsl",
+        // stylesheet: "/styles/rss.xsl",
         title: "Samuel's Blog",
         description: "Un blog sobre mis pensamientos y experiencias.",
+
+        xmlns: {
+          media: 'http://search.yahoo.com/mrss/',
+        },
+
         site: site ?? '',
-        items: blogPosts.map((post) => ({
-            title: post.data.title,
-            pubDate: post.data.date,
-            link: `/posts/${post.slug}/`,
-            description: post.data.description,
+        items: blogPosts.map(({data, slug, body}) => ({
+            title: data.title,
+            pubDate: data.date,
+            link: `/posts/${slug}/`,
+            description: data.description,
+
+            content: sanitizeHtml(parser.render(body), {
+              allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
+            }),
+
+            customData: `<media:content
+                type="image/${data.image.format === 'jpg' ? 'jpeg' : 'png'}"
+                width="${data.image.width}"
+                height="${data.image.height}"
+                medium="image"
+                url="${site + data.image.src}" />
+            `,
+
         })),
         customData: `<language>es-es</language>`,
     }
